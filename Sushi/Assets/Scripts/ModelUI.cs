@@ -7,6 +7,7 @@ using TMPro;
 public class ModelUI : MonoBehaviour
 {
     public GameObject modelPanel;
+    public GameObject leavePanel;
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +21,21 @@ public class ModelUI : MonoBehaviour
         
     }
 
-    public void TurnOn()
+    public void TurnOnModelPanel()
     {
         modelPanel.SetActive(true);
+        leavePanel.SetActive(false);
     }
 
-    public void TurnOff()
+    public void TurnOnLeavePanel()
     {
         modelPanel.SetActive(false);
+        leavePanel.SetActive(true);
+    }
+
+    public void TurnOffAll()
+    {
+        modelPanel.SetActive(false);
+        leavePanel.SetActive(false);
     }
 }

@@ -7,6 +7,7 @@ using TMPro;
 public class ModelManager : MonoBehaviour
 {
     public List<GameObject> prefabs;
+    public Transform spawnPosition;
     public List<RenderTexture> renderTextures;
     public RawImage rawImage;
     public TMP_Text modelText;
@@ -46,6 +47,7 @@ public class ModelManager : MonoBehaviour
 
     public void Confirm()
     {
-        Instantiate(prefabs[currentIndex]);
+        GameObject temp = Instantiate(prefabs[currentIndex]);
+        temp.transform.position = spawnPosition.position;
     }
 }
