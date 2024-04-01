@@ -7,13 +7,11 @@ public class ModelPlacement : MonoBehaviour
     private Rigidbody rb;
     private List<int> hands = new List<int>();
     private int counter = 0;
-    private Vector3 originalRotation;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        originalRotation = transform.eulerAngles;
     }
 
     // Update is called once per frame
@@ -26,7 +24,6 @@ public class ModelPlacement : MonoBehaviour
         else
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
-            transform.eulerAngles = new Vector3(originalRotation.x, transform.eulerAngles.y, originalRotation.z);
         }
     }
 
@@ -34,13 +31,11 @@ public class ModelPlacement : MonoBehaviour
     {
         counter++;
         hands.Add(counter);
-        //rb.constraints = RigidbodyConstraints.None;
     }
  
     public void OnRelease()
     {
         hands.Remove(counter);
         counter--;
-        //rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 }

@@ -8,9 +8,7 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     public List<string> scenes;
-    //public List<RenderTexture> renderTextures;
     public List<string> names;
-    //public RawImage rawImage;
     public TMP_Text mapText;
 
     private int currentIndex = 0;
@@ -24,7 +22,6 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rawImage.texture = renderTextures[currentIndex];
         mapText.text = names[currentIndex];
     }
 
