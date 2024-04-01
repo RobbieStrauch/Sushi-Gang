@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class ModelDestroy : MonoBehaviour
 {
+    public static ModelDestroy instance;
+
+    public List<GameObject> prefabsInScene;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +28,25 @@ public class ModelDestroy : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Clear()
     {
-        if (other.CompareTag("Prefab"))
+        if (prefabsInScene.Count > 0)
         {
-            Destroy(other.gameObject);
+            GameObject temp = prefabsInScene[prefabsInScene.Count - 1];
+            prefabsInScene.Remove(prefabsInScene[prefabsInScene.Count - 1]);
+            Destroy(temp);
+        }
+    }
+
+    public void ClearAll()
+    {
+        if (prefabsInScene.Count > 0)
+        {
+            foreach (var item in prefabsInScene)
+            {
+                Destroy(item);
+            }
+            prefabsInScene.Clear();
         }
     }
 }

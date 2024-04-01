@@ -48,6 +48,7 @@ public class ModelManager : MonoBehaviour
     public void Confirm()
     {
         GameObject temp = Instantiate(prefabs[currentIndex]);
+        ModelDestroy.instance.prefabsInScene.Add(temp);
         temp.transform.position = spawnPosition.position;
     }
 }

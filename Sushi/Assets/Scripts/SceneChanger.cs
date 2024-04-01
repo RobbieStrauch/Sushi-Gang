@@ -7,22 +7,22 @@ public class SceneChanger : MonoBehaviour
 {
     public void CurrentScene()
     {
-        //SceneManager.LoadScene("MenuDemo");
+        SceneManager.LoadScene("CurrentScene");
     }
 
     public void FutureScene()
     {
-        //SceneManager.LoadScene("MenuDemo");
+        SceneManager.LoadScene("FutureScene");
     }
 
     public void FreeScene()
     {
-        //SceneManager.LoadScene("MenuDemo");
+        SceneManager.LoadScene("FreeScene");
     }
 
     public void MenuScene()
     {
-        //SceneManager.LoadScene("MenuDemo");
+        SceneManager.LoadScene("MenuScene");
     }
 
     public void ExitGame()

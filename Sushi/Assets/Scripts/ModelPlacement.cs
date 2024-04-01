@@ -4,27 +4,43 @@ using UnityEngine;
 
 public class ModelPlacement : MonoBehaviour
 {
-    Rigidbody rb;
+    private Rigidbody rb;
+    private List<int> hands = new List<int>();
+    private int counter = 0;
+    private Vector3 originalRotation;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        originalRotation = transform.eulerAngles;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (hands.Count > 0)
+        {
+            rb.constraints = RigidbodyConstraints.None;
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            transform.eulerAngles = new Vector3(originalRotation.x, transform.eulerAngles.y, originalRotation.z);
+        }
     }
 
     public void OnGrab()
     {
-        rb.constraints = RigidbodyConstraints.None;
+        counter++;
+        hands.Add(counter);
+        //rb.constraints = RigidbodyConstraints.None;
     }
  
     public void OnRelease()
     {
-        rb.constraints = RigidbodyConstraints.FreezeAll;
+        hands.Remove(counter);
+        counter--;
+        //rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 }
