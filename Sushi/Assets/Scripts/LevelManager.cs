@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
 {
     public List<string> scenes;
     public List<string> names;
+    public List<Sprite> images;
+    public Image mapImage;
     public TMP_Text mapText;
 
     private int currentIndex = 0;
@@ -23,6 +25,7 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         mapText.text = names[currentIndex];
+        mapImage.sprite = images[currentIndex];
     }
 
     public void MoveLeft()
